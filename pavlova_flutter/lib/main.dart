@@ -41,31 +41,27 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    // #docregion ratings, stars
-    var stars = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.star, color: Colors.green[500]),
-        Icon(Icons.star, color: Colors.green[500]),
-        Icon(Icons.star, color: Colors.green[500]),
-        const Icon(Icons.star, color: Colors.black),
-        const Icon(Icons.star, color: Colors.black),
-      ],
-    );
-    // #enddocregion stars
-
     final ratings = Container(
       padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          stars,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.star, color: Colors.green),
+              Icon(Icons.star, color: Colors.green),
+              Icon(Icons.star, color: Colors.green),
+              const Icon(Icons.star, color: Colors.black),
+              const Icon(Icons.star, color: Colors.black),
+            ],
+          ),
           const Text(
             '170 Reviews',
             style: TextStyle(
               color: Colors.black,
-              fontWeight: FontWeight.w800,
-              fontFamily: 'Roboto',
+              fontWeight: FontWeight.bold,
+              // fontFamily: 'Roboto',
               letterSpacing: 0.5,
               fontSize: 20,
             ),
@@ -73,9 +69,7 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-    // #enddocregion ratings
 
-    // #docregion iconList
     const descTextStyle = TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.w800,
@@ -119,9 +113,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
-    // #enddocregion iconList
 
-    // #docregion leftColumn
     final description = Container(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -133,7 +125,6 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-    // #enddocregion leftColumn
 
     final mainImage = Image.asset(
       'images/pavlova.jpeg',
@@ -144,25 +135,18 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Container(
-        margin: const EdgeInsets.fromLTRB(0, 40, 0, 30),
-        height: 600,
+      body: Padding(
+        padding: const EdgeInsets.all(12),
         child: Card(
-          child: SafeArea(
-            right: true,
-            left: false,
-            top: false,
-            bottom: false,
-            child: ListView(
-              children: [
-                mainImage,
-                description,
-              ],
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              mainImage,
+              description,
+            ],
           ),
         ),
       ),
-      // #enddocregion body
     );
   }
 }

@@ -18,6 +18,21 @@ struct ContentView: View {
     }
 }
 
+struct Ratings: View {
+    var body: some View {
+        HStack{
+            Image(systemName: "star.fill").foregroundColor(.green)
+            Image(systemName: "star.fill").foregroundColor(.green)
+            Image(systemName: "star.fill").foregroundColor(.green)
+            Image(systemName: "star.fill").foregroundColor(.black)
+            Image(systemName: "star.fill").foregroundColor(.black)
+            Text("170 reviews")
+                .font(.system(size: 20, weight: .bold))
+                .kerning(0.5)
+        }
+    }
+}
+
 struct Description: View {
     var body: some View {
         VStack{
@@ -27,34 +42,39 @@ struct Description: View {
                 .font(.body)
                 .padding()
             HStack{
-                Text("⭐️⭐️⭐️⭐️⭐️")
-                Text("170 reviews")
+                Ratings()
+                
             }
-            ActivityTime().padding()
+            IconList().padding()
         }
     }
 }
 
-struct ActivityTime: View {
+struct IconList: View {
+    let fontSize:CGFloat = 18
+    let lineHeight:CGFloat
+    init(){
+        lineHeight = fontSize * 2
+    }
     var body: some View {
         HStack{
             VStack{
                 Image(systemName: "rectangle")
-                Text("PREP")
-                Text("25 min")
+                Text("PREP:").frame(minHeight: lineHeight)
+                Text("25 min").frame(minHeight: lineHeight)
             }
             VStack{
                 Image(systemName: "circle")
-                Text("COOK")
-                Text("25 min")
+                Text("COOK:").padding(.vertical, 18/2)
+                Text("25 min").padding(.vertical, 18/2)
             }
             VStack{
                 Image(systemName: "triangle")
-                Text("FEEDS")
+                Text("FEEDS:")
                 Text("25 min")
             }
         }
-        
+        .font(.system(size: fontSize, weight: .bold))
     }
 }
 
